@@ -1,0 +1,15 @@
+version: "3.1"
+services:
+  salefunnelapi:
+    build:
+      context: .
+      dockerfile: SaleFunnelAPI/Dockerfile
+    ports:
+      - 9900:80  
+  projectdeliveryapi:
+    build:
+      context: .
+      dockerfile: ProjectDeliveryAPI/Dockerfile
+    ports:
+      - 9901:80
+  

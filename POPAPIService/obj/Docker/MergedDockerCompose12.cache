@@ -1,0 +1,112 @@
+services:
+  gateway:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\POPAPIGateWay
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: POPAPIGateway
+      target: base
+    container_name: POPAPIGateway
+    entrypoint: C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus
+      /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646 /LogDebuggeeOutputToStdOut
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: c:\.nuget\fallbackpackages;c:\.nuget\fallbackpackages2;c:\.nuget\fallbackpackages3
+      NUGET_PACKAGES: C:\.nuget\packages
+    image: popapigateway:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath c:\.nuget\packages
+        --additionalProbingPath c:\.nuget\fallbackpackages --additionalProbingPath
+        c:\.nuget\fallbackpackages2 --additionalProbingPath c:\.nuget\fallbackpackages3  "C:\app\bin\Debug\net6.0\POPAPIGateway.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: C:\remote_debugger\x64\utils\KillProcess.exe
+        dotnet.exe
+      com.microsoft.visualstudio.debuggee.program: '"C:\Program Files\dotnet\dotnet.exe"'
+      com.microsoft.visualstudio.debuggee.workingdirectory: C:\app
+    ports:
+    - published: 4444
+      target: 4444
+    - published: 5555
+      target: 5555
+    volumes:
+    - C:\Users\DoubleP\AppData\Roaming\ASP.NET\Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+    - C:\Users\DoubleP\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\POPAPIGateWay:C:\app:rw
+    - C:\Users\DoubleP\onecoremsvsmon\17.0.1222.0:C:\remote_debugger:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\POPAPIGateWay:C:\src:rw
+    - C:\Microsoft\Xamarin\NuGet:c:\.nuget\fallbackpackages:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:c:\.nuget\fallbackpackages2:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:c:\.nuget\fallbackpackages3:ro
+    - C:\Users\DoubleP\.nuget\packages:c:\.nuget\packages:ro
+  servicea:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\ProjectDeliveryAPI
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: ProjectDeliveryAPI
+      target: base
+    container_name: ProjectDeliveryAPI
+    entrypoint: C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus
+      /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646 /LogDebuggeeOutputToStdOut
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: c:\.nuget\fallbackpackages;c:\.nuget\fallbackpackages2;c:\.nuget\fallbackpackages3
+      NUGET_PACKAGES: C:\.nuget\packages
+    image: projectdeliveryservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath c:\.nuget\packages
+        --additionalProbingPath c:\.nuget\fallbackpackages --additionalProbingPath
+        c:\.nuget\fallbackpackages2 --additionalProbingPath c:\.nuget\fallbackpackages3  "C:\app\bin\Debug\net6.0\ProjectDeliveryAPI.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: C:\remote_debugger\x64\utils\KillProcess.exe
+        dotnet.exe
+      com.microsoft.visualstudio.debuggee.program: '"C:\Program Files\dotnet\dotnet.exe"'
+      com.microsoft.visualstudio.debuggee.workingdirectory: C:\app
+    volumes:
+    - C:\Users\DoubleP\AppData\Roaming\ASP.NET\Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+    - C:\Users\DoubleP\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\ProjectDeliveryAPI:C:\app:rw
+    - C:\Users\DoubleP\onecoremsvsmon\17.0.1222.0:C:\remote_debugger:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\ProjectDeliveryAPI:C:\src:rw
+    - C:\Microsoft\Xamarin\NuGet:c:\.nuget\fallbackpackages:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:c:\.nuget\fallbackpackages2:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:c:\.nuget\fallbackpackages3:ro
+    - C:\Users\DoubleP\.nuget\packages:c:\.nuget\packages:ro
+  serviceb:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\SaleFunnelAPI
+      dockerfile: Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: SaleFunnelAPI
+      target: base
+    container_name: SaleFunnelAPI
+    entrypoint: C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus
+      /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646 /LogDebuggeeOutputToStdOut
+    environment:
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: c:\.nuget\fallbackpackages;c:\.nuget\fallbackpackages2;c:\.nuget\fallbackpackages3
+      NUGET_PACKAGES: C:\.nuget\packages
+    image: salefunnelservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath c:\.nuget\packages
+        --additionalProbingPath c:\.nuget\fallbackpackages --additionalProbingPath
+        c:\.nuget\fallbackpackages2 --additionalProbingPath c:\.nuget\fallbackpackages3  "C:\app\bin\Debug\net6.0\SaleFunnelAPI.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: C:\remote_debugger\x64\utils\KillProcess.exe
+        dotnet.exe
+      com.microsoft.visualstudio.debuggee.program: '"C:\Program Files\dotnet\dotnet.exe"'
+      com.microsoft.visualstudio.debuggee.workingdirectory: C:\app
+    volumes:
+    - C:\Users\DoubleP\AppData\Roaming\ASP.NET\Https:C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https:ro
+    - C:\Users\DoubleP\AppData\Roaming\Microsoft\UserSecrets:C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\SaleFunnelAPI:C:\app:rw
+    - C:\Users\DoubleP\onecoremsvsmon\17.0.1222.0:C:\remote_debugger:ro
+    - D:\ABackup\PP Project\DockerPJ\POPAPIService\SaleFunnelAPI:C:\src:rw
+    - C:\Microsoft\Xamarin\NuGet:c:\.nuget\fallbackpackages:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:c:\.nuget\fallbackpackages2:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:c:\.nuget\fallbackpackages3:ro
+    - C:\Users\DoubleP\.nuget\packages:c:\.nuget\packages:ro
+version: '3.9'

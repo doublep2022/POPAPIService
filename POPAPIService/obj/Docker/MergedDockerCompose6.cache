@@ -1,0 +1,26 @@
+services:
+  gateway:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\POPAPIGateWay
+      dockerfile: Dockerfile
+    image: popapigateway
+    ports:
+    - published: 8000
+      target: 8000
+  servicea:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\ProjectDeliveryAPI
+      dockerfile: Dockerfile
+    image: projectdeliveryservice
+    ports:
+    - published: 8001
+      target: 8001
+  serviceb:
+    build:
+      context: D:\ABackup\PP Project\DockerPJ\POPAPIService\SaleFunnelAPI
+      dockerfile: Dockerfile
+    image: salefunnelservice
+    ports:
+    - published: 8002
+      target: 8002
+version: '3.9'
